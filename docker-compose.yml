@@ -4,14 +4,11 @@ services:
   app:
     build: '.'
     command: 'make test'
+    platform: linux/amd64 # in order to old versions of v8 to compile in arm64
     volumes:
       - .:/app:cached
-      - bundler-data:/usr/local/bundle/
-      - bin-data:/usr/local/bin/
     ports:
       - "3000:3000"
+    environment:
+      BUNDLE_APP_CONFIG: /app/.bundle
 
-
-volumes:
-  bundler-data:
-  bin-data:

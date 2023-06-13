@@ -5,31 +5,13 @@ require 'database_cleaner'
 require 'coveralls'
 Coveralls.wear!
 
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH << File.expand_path('support', __dir__)
-
-ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', __dir__)
-require 'bundler'
-Bundler.setup
-
 ENV['RAILS_ENV'] = 'test'
 
 require 'appraisal_helper'
 
-require 'active_model'
-# require ActiveRecord to ensure that Ransack loads correctly
-require 'active_record'
-require 'action_view'
+require File.expand_path("#{ENV['RAILS_ROOT']}/config/environment", __FILE__)
 
-require 'active_admin'
-
-ActiveAdmin.application.load_paths = ["#{ENV['RAILS_ROOT']}/app/admin"]
-require "#{ENV['RAILS_ROOT']}/config/environment.rb"
-
-# Disabling authentication in specs so that we don't have to worry about
-# it allover the place
-ActiveAdmin.application.authentication_method = false
-ActiveAdmin.application.current_user_method = false
+# require "#{ENV['RAILS_ROOT']}/config/environment.rb"
 
 require 'rspec/rails'
 require 'support/admin'

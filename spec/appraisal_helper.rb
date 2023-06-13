@@ -1,11 +1,12 @@
 # load the right dummy app.
-require 'rails'
+
+require 'rails/version'
 
 ENV['RAILS'] = Rails.version
 puts "Using Rails #{Rails.version}"
 ENV['RAILS_ROOT'] = File.expand_path("../rails/rails-#{ENV['RAILS']}", __FILE__)
 # Create the test app if it doesn't exists
-puts "using bundlefrom : #{ENV['BUNDLE_GEMFILE']}"
+puts "using bundle from : #{ENV['BUNDLE_GEMFILE']}"
 appraisal_env = "rails#{Rails::VERSION::STRING.split('.').first(2).join('.')}"
 
 if File.exist?(ENV['RAILS_ROOT'])

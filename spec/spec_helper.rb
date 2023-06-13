@@ -6,9 +6,9 @@ require 'coveralls'
 Coveralls.wear!
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH << File.expand_path('../support', __FILE__)
+$LOAD_PATH << File.expand_path('support', __dir__)
 
-ENV['BUNDLE_GEMFILE'] = File.expand_path('../../Gemfile', __FILE__)
+ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', __dir__)
 require 'bundler'
 Bundler.setup
 
@@ -23,8 +23,9 @@ require 'action_view'
 
 require 'active_admin'
 
-ActiveAdmin.application.load_paths = [ENV['RAILS_ROOT'] + '/app/admin']
-require ENV['RAILS_ROOT'] + '/config/environment.rb'
+ActiveAdmin.application.load_paths = ["#{ENV['RAILS_ROOT']}/app/admin"]
+require "#{ENV['RAILS_ROOT']}/config/environment.rb"
+
 # Disabling authentication in specs so that we don't have to worry about
 # it allover the place
 ActiveAdmin.application.authentication_method = false
@@ -39,13 +40,13 @@ unless ENV['CAPYBARA_FIREFOX']
   require 'capybara/poltergeist'
 
   Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, {
-        js_errors: false,
+    Capybara::Poltergeist::Driver.new(
+      app,
+      { js_errors: false,
         timeout: 80,
         debug: false,
-        :phantomjs_options => ['--debug=no', '--load-images=no']
-
-    })
+        phantomjs_options: ['--debug=no', '--load-images=no'] }
+    )
   end
 
   Capybara.javascript_driver = :poltergeist

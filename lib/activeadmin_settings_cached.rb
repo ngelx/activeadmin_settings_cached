@@ -4,7 +4,7 @@ require 'activeadmin_settings_cached/engine'
 
 module ActiveadminSettingsCached
   class Configuration
-    attr_accessor :model_name, :display
+    attr_writer :model_name, :display
 
     def model_name
       (@model_name ||= 'Setting').constantize

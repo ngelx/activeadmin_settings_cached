@@ -5,6 +5,9 @@ ENV['RAILS'] = Rails.version
 puts "Using Rails #{Rails.version}"
 ENV['RAILS_ROOT'] = File.expand_path("../rails/rails-#{ENV['RAILS']}", __FILE__)
 # Create the test app if it doesn't exists
+puts "using bundlefrom : #{ENV['BUNDLE_GEMFILE']}"
+appraisal_env = "rails#{Rails::VERSION::STRING.split('.').first(2).join('.')}"
+
 if File.exist?(ENV['RAILS_ROOT'])
   puts "Using dummy Rails in #{ENV['RAILS_ROOT']}"
 else
@@ -26,6 +29,6 @@ else
       --skip-spring
     ]
 
-    system "bundle exec rails new #{dir} #{args.join ' '}"
+    system "appraisal #{appraisal_env} rails new #{dir} #{args.join ' '}"
   end
 end

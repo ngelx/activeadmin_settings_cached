@@ -2,6 +2,8 @@
 
 require 'bundler'
 require 'rake'
+require 'rails'
+
 Bundler.setup
 Bundler::GemHelper.install_tasks
 
@@ -18,3 +20,7 @@ end
 
 desc 'Default: run the rspec examples'
 task :default => [:spec]
+
+require File.expand_path("../spec/rails/rails-#{Rails.version}/config/application", __FILE__)
+
+Rails.application.load_tasks

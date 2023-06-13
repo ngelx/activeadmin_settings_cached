@@ -7,11 +7,4 @@ gem "inherited_resources"
 gem "listen"
 gem "activeadmin", ">= 1.0", "~> 2.4"
 
-group :test do
-  gem "pry-byebug"
-  gem "puma"
-  gem "therubyracer"
-  gem "sassc"
-end
-
 gemspec path: "../"

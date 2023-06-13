@@ -1,7 +1,6 @@
 # frozen_string_literal: true
-# Rails template to build the sample app for specs
 
-generate :settings, 'Setting'
+# Rails template to build the sample app for specs
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
@@ -10,7 +9,7 @@ generate :'formtastic:install'
 generate :'settings:install'
 
 # Configure Setup
-inject_into_file 'config/initializers/active_admin.rb', <<-RUBY, before: "ActiveAdmin.setup do |config|"
+inject_into_file 'config/initializers/active_admin.rb', <<-RUBY, before: 'ActiveAdmin.setup do |config|'
   ActiveadminSettingsCached.configure do |config|
     config.model_name = 'Setting'
   end

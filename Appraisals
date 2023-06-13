@@ -5,15 +5,16 @@ appraise 'rails5.1' do
   gem 'inherited_resources'
   gem 'listen'
   gem 'activeadmin', '>= 1.0', '~> 2.4' # 2.5 Support for Rails 5.0 and Rails 5.1 has been dropped
-  gem 'coffee-rails', '~> 5.0.0'
 end
 
 appraise 'rails6.0' do
   gem 'rails', '~> 6.0.1'
+  gem 'bootsnap', require: false
 
   gem 'inherited_resources'
   gem 'listen'
 
   gem 'activeadmin', '>= 1.0', '~> 2.12' # 2.13 drops rails 6.0 support
+  gem 'rails-settings-cached', '> 0.6.6'
   gem 'coffee-rails', '~> 5.0.0'
 end

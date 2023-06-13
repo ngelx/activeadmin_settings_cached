@@ -13,19 +13,16 @@ require 'bundler'
 Bundler.setup
 
 ENV['RAILS_ENV'] = 'test'
-# Ensure the Active Admin load path is happy
-require 'rails'
-ENV['RAILS'] = Rails.version
-ENV['RAILS_ROOT'] = File.expand_path("../rails/rails-#{ENV['RAILS']}", __FILE__)
-# Create the test app if it doesn't exists
-unless File.exist?(ENV['RAILS_ROOT'])
-  system 'rake setup'
-end
+
+require 'appraisal_helper'
 
 require 'active_model'
 # require ActiveRecord to ensure that Ransack loads correctly
 require 'active_record'
+require 'action_view'
+
 require 'active_admin'
+
 ActiveAdmin.application.load_paths = [ENV['RAILS_ROOT'] + '/app/admin']
 require ENV['RAILS_ROOT'] + '/config/environment.rb'
 # Disabling authentication in specs so that we don't have to worry about
@@ -45,7 +42,7 @@ unless ENV['CAPYBARA_FIREFOX']
     Capybara::Poltergeist::Driver.new(app, {
         js_errors: false,
         timeout: 80,
-        debug: true,
+        debug: false,
         :phantomjs_options => ['--debug=no', '--load-images=no']
 
     })

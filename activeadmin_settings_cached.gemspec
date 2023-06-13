@@ -13,18 +13,19 @@ Gem::Specification.new do |s|
   s.description   = 'UI interface for rails-settings-cached in active admin'
   s.homepage      = 'https://github.com/artofhuman/activeadmin_settings_cached'
   s.license       = 'MIT'
+  s.required_ruby_version = '>= 2.7.0'
 
   s.files         = `git ls-files -z`.split("\x0")
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency 'activeadmin', '~> 1.0', '< 1.2.0'
+  s.add_dependency 'activeadmin', '>= 1.0'
   s.add_dependency 'rails-settings-cached', '>= 0.5.3', '< 0.6.7'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'bundler'
-  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'capybara', '< 3.40' # 3.40 drop support for ruby 2.7
   s.add_development_dependency 'coveralls'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'poltergeist'

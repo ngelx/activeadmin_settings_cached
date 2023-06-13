@@ -3,6 +3,7 @@ cache: bundler
 
 gemfile:
   - gemfiles/rails5.1.gemfile
+  - gemfiles/rails6.0.gemfile
 
 before_script:
   - curl -o- -L https://yarnpkg.com/install.sh | bash

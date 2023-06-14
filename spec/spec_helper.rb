@@ -11,8 +11,6 @@ require 'appraisal_helper'
 
 require File.expand_path("#{ENV['RAILS_ROOT']}/config/environment", __FILE__)
 
-# require "#{ENV['RAILS_ROOT']}/config/environment.rb"
-
 require 'rspec/rails'
 require 'support/admin'
 require 'capybara/rails'

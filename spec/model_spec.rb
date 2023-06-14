@@ -116,7 +116,7 @@ RSpec.describe ActiveadminSettingsCached::Model do
 
     it 'with boolean element' do
       object = described_class.new(all_options)
-      expect(object.field_options('base.second_setting', 'base.second_setting')).to eq({as: 'boolean',
+      expect(object.field_options('base.second_setting', 'base.second_setting')).to eq({as: :boolean,
                                                                  label: '',
                                                                  input_html: {checked: true},
                                                                  checked_value: 'true',
